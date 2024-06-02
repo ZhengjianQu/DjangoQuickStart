@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_NAME=quickstart
+      - DATABASE_USER=qzj
+      - DATABASE_PASSWORD=db123456
+      - DATABASE_HOST=docker-myqsl-quickstart
+      - DATABASE_PORT=3306
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    external: true
