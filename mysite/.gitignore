@@ -1,0 +1,4 @@
+#TODO
+*.tar
+.env
+db.sqlite3
