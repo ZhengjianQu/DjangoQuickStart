@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     gcc \
     pkg-config \
     libmariadb-dev \
+    netcat-openbsd \
     && apt-get clean
 
 # 复制项目的依赖文件
@@ -23,5 +24,5 @@ COPY . .
 # 公开Django默认端口
 EXPOSE 8000
 
-# 运行Django开发服务器
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# 等待MySQL服务,运行Django开发服务器
+CMD ["sh", "-c", "./wait-for-it.sh mysql 3306","python manage.py runserver 0.0.0.0:8000"]
