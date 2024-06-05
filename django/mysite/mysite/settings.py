@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*p2mdxsn=hj7a=fg6z^sa#rc%-@i+tdr7hi8-71q3yy*f6wdp#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.29.12.37']
+ALLOWED_HOSTS = ['52.29.12.37','localhost']
 
 
 # Application definition
@@ -98,11 +98,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'PORT': os.getenv('DATABASE_PORT'),
+        'NAME': 'docker-mysql-quickstart',
+        'USER': 'qzj',
+        'PASSWORD': 'db123456',
+        'HOST': 'mysql-mysql-1',
+        'PORT': '3306',
     }
 }
 
@@ -155,3 +155,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+

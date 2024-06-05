@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # 复制项目的依赖文件
-COPY requirements.txt .
+COPY mysite/requirements.txt .
 
 # 安装项目的依赖
 RUN pip install -r requirements.txt
@@ -25,4 +25,4 @@ COPY . .
 EXPOSE 8000
 
 # 等待MySQL服务,运行Django开发服务器
-CMD ["sh", "-c", "./wait-for-it.sh mysql 3306","python manage.py runserver 0.0.0.0:8000"]
+CMD ["sh", "-c", "./wait-for-it.sh mysql 3306 -- python manage.py runserver 0.0.0.0:8000"]

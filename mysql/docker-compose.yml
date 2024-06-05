@@ -1,0 +1,38 @@
+# mysql.compose file
+
+services:
+  mysql:
+    image: mariadb:10.8.3
+    # Uncomment below when on Mac M1
+    # platform: linux/arm64/v8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: db123456
+        MYSQL_DATABASE: docker_mysql_quickstart
+        MYSQL_USER: qzj
+        MYSQL_PASSWORD: db123456
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql  # 持久化卷
+    networks:
+      - my_mysql_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 10s
+      retries: 5
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+      
+networks:
+  my_mysql_network:
+    driver: bridge
+      
+volumes:
+  mysql_data:
+    driver: local  # 使用本地卷驱动
