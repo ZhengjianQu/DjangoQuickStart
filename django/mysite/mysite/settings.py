@@ -101,7 +101,7 @@ DATABASES = {
         'NAME': 'docker-mysql-quickstart',
         'USER': 'qzj',
         'PASSWORD': 'db123456',
-        'HOST': 'mysql-mysql-1',
+        'HOST': '192.168.64.2',
         'PORT': '3306',
     }
 }

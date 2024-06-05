@@ -13,8 +13,8 @@ services:
       ports:
         - "8000:8000"
       networks:
-        - my_mysql_network
+        - mynetwork
 
 networks:
-  my_mysql_network:
+  mynetwork:
     external: true

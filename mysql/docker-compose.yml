@@ -2,14 +2,11 @@
 
 services:
   mysql:
-    image: mariadb:10.8.3
-    # Uncomment below when on Mac M1
-    # platform: linux/arm64/v8
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql:8.0
     restart: always
     environment:
         MYSQL_ROOT_PASSWORD: db123456
-        MYSQL_DATABASE: docker_mysql_quickstart
+        MYSQL_DATABASE: docker-mysql-quickstart
         MYSQL_USER: qzj
         MYSQL_PASSWORD: db123456
     ports:
@@ -17,7 +14,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql  # 持久化卷
     networks:
-      - my_mysql_network
+      - mynetwork
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
       interval: 10s
@@ -30,7 +27,7 @@ services:
       - 8080:8080
       
 networks:
-  my_mysql_network:
+  mynetwork:
     driver: bridge
       
 volumes:

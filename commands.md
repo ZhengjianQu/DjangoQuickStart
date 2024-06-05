@@ -162,3 +162,9 @@ scp -i <key_file> <local_file> <remote_user>@<remote_host>:<remote_path>
 # 修改文件权限
 chmod +x <file_name>
 ```
+
+docker network rm mynetwork
+docker network create mynetwork
+docker network connect mynetwork mysql-mysql-1;
+docker network inspect mynetwork
+python mysite/manage.py createsuperuser
